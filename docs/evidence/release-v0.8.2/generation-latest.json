@@ -1,0 +1,31 @@
+{
+  "all_passed": true,
+  "backend": "memory",
+  "evidence": "evidence/generation-20261010-182507-a4da5b64e68f7f9a28f45f287c457543",
+  "run_directory": "evidence/generation-20261010-182507-a4da5b64e68f7f9a28f45f287c457543",
+  "scope": "real Turso ordinary WAL, TCP page I/O, immutable publication, archive and cold recovery; no Keeper or distributed failover",
+  "source_commit": "5c168be5ef6a32ac966daf5983502a4f694b37ad",
+  "tests": {
+    "old_snapshots_across_page_rewrite_and_generations": {
+      "pass": true,
+      "snapshots": 6
+    },
+    "repeated_vacuum_and_post_vacuum_writes": {
+      "after_bytes": 16384,
+      "before_bytes": 180224,
+      "pass": true
+    },
+    "retained_generations_after_process_restart": {
+      "pass": true
+    },
+    "truncate_and_restart_reuse": {
+      "pass": true
+    },
+    "unsafe_reset_rejected_without_covering_durable_base": {
+      "pass": true
+    }
+  },
+  "source_release": "v0.8.2",
+  "public_summary_only": true,
+  "storage_configuration_redacted": true
+}

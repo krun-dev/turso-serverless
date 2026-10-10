@@ -1,5 +1,9 @@
 # Turso WAL Pageserver 完整读写路径与官方用例验证
 
+当前依赖为 [Turso v0.8.2](https://github.com/tursodatabase/turso/releases/tag/v0.8.2)，submodule 固定提交 `5c168be5ef6a32ac966daf5983502a4f694b37ad`。本版本内存与实际 S3 后端各完成 16,182 例完整对照，15,836 通过、346 跳过、0 失败/错误；STRICT 的 342 例及四个持久库诊断通过，原样 TODO 保留两条上游内存 VACUUM 限制。内存与实际 S3 的归档 24 组、冷读写 23 组检查均通过。当前 [内存验收摘要](evidence/release-v0.8.2/cloud-acceptance-memory-latest.json) 和 [S3 验收摘要](evidence/release-v0.8.2/cloud-acceptance-oss-latest.json) 按逐例身份核对覆盖率，原始用例累计通过 16,180 个；标准与对象存储链路没有新增结果差异或快照变更。
+
+以下 20,905 例结果属于此前开发提交的历史验收，原始来源保留，不作为 v0.8.2 的验收结果。
+
 2026-10-10 使用固定 Turso 提交 `8cc059bd951551ae4b9dc31c01146a24b3e87a51` 完成可写对象存储链路验证。官方 SQL、矩阵、EXPLAIN 预期和上游源码保持原样，新增存储 backend 与测试工具位于实验目录。当前支持在线缺块读取、继续写入、checkpoint/VACUUM、归档、pack compaction 和恢复；Keeper 与自动节点切换仍是后续阶段。
 
 ## 验收结果与边界

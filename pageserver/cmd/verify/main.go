@@ -23,8 +23,10 @@ import (
 
 type document = map[string]any
 
-const sourceCommit = "8cc059bd951551ae4b9dc31c01146a24b3e87a51"
+const sourceCommit = "5c168be5ef6a32ac966daf5983502a4f694b37ad"
 const runnerID = "pageserver-corpus-v1"
+const fullCorpusCases = 16182
+const strictCorpusCases = 342
 
 func must[T any](v T, err error) T {
 	if err != nil {
@@ -391,8 +393,8 @@ func summary(root string, args []string) int {
 	}
 	for _, mode := range []string{"official", "remote-cloud"} {
 		base := summaries(full, mode)
-		require(number(base["total"]) == 20905, "full WAL corpus incomplete")
-		require(number(summaries(strict, mode)["total"]) == 342, "STRICT corpus incomplete")
+		require(number(base["total"]) == fullCorpusCases, "full WAL corpus incomplete")
+		require(number(summaries(strict, mode)["total"]) == strictCorpusCases, "STRICT corpus incomplete")
 		require(number(summaries(persistent, mode)["total"]) == 4, "persistent diagnostics incomplete")
 		diag := summaries(skipped, mode)
 		require(number(diag["total"]) == 4 && number(diag["errors"]) == 0, "diagnostic batch incomplete")
@@ -405,7 +407,7 @@ func summary(root string, args []string) int {
 		}
 		require(len(failures) == 2 && reflect.DeepEqual(names, unsupported), "unexpected diagnostic cases")
 		original, strictCases := cases(full, mode), cases(strict, mode)
-		require(len(original) == 20905 && len(strictCases) == 342 && len(cases(skipped, mode)) == 4 && len(cases(persistent, mode)) == 4, "JSONL coverage incomplete")
+		require(len(original) == fullCorpusCases && len(strictCases) == strictCorpusCases && len(cases(skipped, mode)) == 4 && len(cases(persistent, mode)) == 4, "JSONL coverage incomplete")
 		expectedStrict := countCases(original, func(c document) bool {
 			return yes(c["skipped"]) && strings.Contains(str(c["outcome"]), "requires strict")
 		})
@@ -433,6 +435,7 @@ func summary(root string, args []string) int {
 	safety := document{}
 	for category, n := range map[string]int{"archive": 24, "cold": 23} {
 		r := readCategory(root, category, backend)
+		require(r["source_commit"] == sourceCommit, "mixed safety suite revision")
 		require(yes(r["all_passed"]) && len(doc(r["tests"])) == n, "incomplete safety suite")
 		for _, v := range doc(r["tests"]) {
 			require(yes(doc(v)["pass"]), "failed safety test")
@@ -441,7 +444,7 @@ func summary(root string, args []string) int {
 	}
 	base := summaries(full, "remote-cloud")
 	evidence := document{"full": full["evidence"], "strict": strict["evidence"], "skipped": skipped["evidence"], "persistent": persistent["evidence"]}
-	out := document{"backend": backend, "source_commit": sourceCommit, "full_corpus": base, "strict_supplement_passed": 342, "originally_skipped_diagnostics": document{"passed": 2, "unsupported_memory_vacuum": []string{"gencol_vacuum_virtual", "gencol_vacuum_virtual_with_index"}}, "persistent_diagnostic_variants_passed": 4, "original_cases_passed_across_batches": number(base["passed"]) + 344, "raw_original_zero_skip_pass": false, "supported_persistent_path_coverage_pass": true, "additional_cloud_failures": 0, "safety_tests": safety, "operations": doc(full["cloud_stats"])["operations"], "evidence": evidence, "scope": "fixed upstream ordinary WAL SQL corpus, matrices, EXPLAIN and annotated SQLite cross-checks; no distributed failover"}
+	out := document{"backend": backend, "source_commit": sourceCommit, "source_release": "v0.8.2", "full_corpus": base, "strict_supplement_passed": strictCorpusCases, "originally_skipped_diagnostics": document{"passed": 2, "unsupported_memory_vacuum": []string{"gencol_vacuum_virtual", "gencol_vacuum_virtual_with_index"}}, "persistent_diagnostic_variants_passed": 4, "original_cases_passed_across_batches": number(base["passed"]) + strictCorpusCases + 2, "raw_original_zero_skip_pass": false, "supported_persistent_path_coverage_pass": true, "additional_cloud_failures": 0, "safety_tests": safety, "operations": doc(full["cloud_stats"])["operations"], "evidence": evidence, "scope": "fixed upstream ordinary WAL SQL corpus, matrices, EXPLAIN and annotated SQLite cross-checks; no distributed failover"}
 	write(filepath.Join(root, "evidence", "cloud-acceptance-"+backend+"-latest.json"), out)
 	fmt.Println(string(must(json.MarshalIndent(out, "", "  "))))
 	return 0

@@ -1,0 +1,21 @@
+{
+  "all_passed": true,
+  "backend": "memory",
+  "evidence": "evidence/negative-20261010-182505-b425c7fc5720de15dbd5a5a0a668e6ce",
+  "run_directory": "evidence/negative-20261010-182505-b425c7fc5720de15dbd5a5a0a668e6ce",
+  "scope": "real Turso ordinary WAL, TCP page I/O, immutable publication, archive and cold recovery; no Keeper or distributed failover",
+  "source_commit": "5c168be5ef6a32ac966daf5983502a4f694b37ad",
+  "tests": {
+    "latest": {
+      "pass": true,
+      "rejected_with": "fixed_version_mixed_with_latest"
+    },
+    "raw-recovery": {
+      "pass": true,
+      "rejected_with": "unacknowledged_wal_recovered"
+    }
+  },
+  "source_release": "v0.8.2",
+  "public_summary_only": true,
+  "storage_configuration_redacted": true
+}

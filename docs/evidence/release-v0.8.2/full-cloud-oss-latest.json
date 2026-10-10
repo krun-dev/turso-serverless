@@ -1,0 +1,131 @@
+{
+  "all_executable_cases_passed": true,
+  "backend": "oss",
+  "cloud_stats": {
+    "active": 0,
+    "completed": 15836,
+    "hits": 830713,
+    "len": 0,
+    "misses": 65,
+    "operations": {
+      "CREATE": 15838,
+      "GET": 142525,
+      "HINT_PUT": 15836,
+      "LIST": 0,
+      "PROBE_DELETE": 1,
+      "PUT": 15839,
+      "RANGE_GET": 66,
+      "metadata_db_operations": 0,
+      "unit": "object API calls; SDK retries may add HTTP requests"
+    },
+    "rpc": {
+      "admin": 63344,
+      "open": 63344,
+      "read": 119853,
+      "size": 73376,
+      "sync": 59131,
+      "truncate": 5,
+      "write": 104047
+    }
+  },
+  "duration_seconds": 1434.157516375,
+  "evidence": "evidence/full-cloud-20261010-182644-b64cc383bcfec1daf42673106ca7fba5",
+  "explicit_skips_overridden_for_diagnostics": false,
+  "paired_outcome_differences": [
+
+  ],
+  "persistent_diagnostic_variant": false,
+  "prefix": "example/pageserver/runs/full-cloud-20261010-182644-b64cc383bcfec1daf42673106ca7fba5",
+  "requested_suites": [
+    "sqlite-sqltests",
+    "turso-sqltests"
+  ],
+  "runner_id": "pageserver-corpus-v1",
+  "runs": {
+    "official": {
+      "completed": 16182,
+      "exit_code": 0,
+      "failures": [
+
+      ],
+      "scope": [
+        {
+          "cross_check_integrity": true,
+          "explicit_mvcc_cases_excluded": 74,
+          "kind": "scope",
+          "mode": "official",
+          "snapshots_enabled": true
+        }
+      ],
+      "skip_reasons": {
+        "Skipped { reason: \"Same col_used_mask bug exists in DELETE path - panics (see #6206)\" }": 1,
+        "Skipped { reason: \"TODO requires https://github.com/tursodatabase/turso/issues/6087\" }": 1,
+        "Skipped { reason: \"TODO: VACUUM is not supported yet\" }": 2,
+        "Skipped { reason: \"requires strict: uses STRICT tables\" }": 338,
+        "Skipped { reason: \"requires strict: uses custom type CAST\" }": 1,
+        "Skipped { reason: \"requires strict: uses custom types which require STRICT tables\" }": 2,
+        "Skipped { reason: \"requires strict: uses domains which require STRICT tables\" }": 1
+      },
+      "summaries": [
+        {
+          "duration_ms": 60261,
+          "errors": 0,
+          "failed": 0,
+          "kind": "summary",
+          "mode": "official",
+          "passed": 15836,
+          "skipped": 346,
+          "snapshots_new": 0,
+          "snapshots_updated": 0,
+          "total": 16182
+        }
+      ]
+    },
+    "remote-cloud": {
+      "completed": 16182,
+      "exit_code": 0,
+      "failures": [
+
+      ],
+      "scope": [
+        {
+          "cross_check_integrity": true,
+          "explicit_mvcc_cases_excluded": 74,
+          "kind": "scope",
+          "mode": "remote-cloud",
+          "snapshots_enabled": true
+        }
+      ],
+      "skip_reasons": {
+        "Skipped { reason: \"Same col_used_mask bug exists in DELETE path - panics (see #6206)\" }": 1,
+        "Skipped { reason: \"TODO requires https://github.com/tursodatabase/turso/issues/6087\" }": 1,
+        "Skipped { reason: \"TODO: VACUUM is not supported yet\" }": 2,
+        "Skipped { reason: \"requires strict: uses STRICT tables\" }": 338,
+        "Skipped { reason: \"requires strict: uses custom type CAST\" }": 1,
+        "Skipped { reason: \"requires strict: uses custom types which require STRICT tables\" }": 2,
+        "Skipped { reason: \"requires strict: uses domains which require STRICT tables\" }": 1
+      },
+      "summaries": [
+        {
+          "duration_ms": 1432847,
+          "errors": 0,
+          "failed": 0,
+          "kind": "summary",
+          "mode": "remote-cloud",
+          "passed": 15836,
+          "skipped": 346,
+          "snapshots_new": 0,
+          "snapshots_updated": 0,
+          "total": 16182
+        }
+      ]
+    }
+  },
+  "scope": "unchanged upstream WAL SQL cases and matrices, EXPLAIN verification and annotated SQLite integrity; explicit MVCC excluded",
+  "source_commit": "5c168be5ef6a32ac966daf5983502a4f694b37ad",
+  "strict_supplement": false,
+  "test_filter": null,
+  "source_release": "v0.8.2",
+  "public_summary_only": true,
+  "storage_configuration_redacted": true
+}

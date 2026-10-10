@@ -1,8 +1,8 @@
 {
   "scope": "WAL mode only",
-  "source_commit": "8cc059bd951551ae4b9dc31c01146a24b3e87a51",
+  "source_commit": "5c168be5ef6a32ac966daf5983502a4f694b37ad",
   "source_modified": false,
-  "source_package_version": "0.8.0",
+  "source_package_version": "0.8.2",
   "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
   "features": [
     "fs",
@@ -11,8 +11,11 @@
   ],
   "profile": "debug",
   "validation": {
-    "positive": "docs/evidence/latest.json",
-    "negative": "docs/evidence/negative-controls.json"
+    "positive": "docs/evidence/release-v0.8.2/latest.json",
+    "negative": "docs/evidence/release-v0.8.2/negative-memory-latest.json"
   },
-  "source_url": "https://github.com/tursodatabase/turso"
+  "source_url": "https://github.com/tursodatabase/turso",
+  "source_release": "v0.8.2",
+  "source_release_url": "https://github.com/tursodatabase/turso/releases/tag/v0.8.2",
+  "submodule_path": ".deps/turso"
 }

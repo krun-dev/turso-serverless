@@ -1,0 +1,3 @@
+[submodule ".deps/turso"]
+	path = .deps/turso
+	url = https://github.com/tursodatabase/turso.git

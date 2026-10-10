@@ -39,7 +39,7 @@ func integration(t *testing.T, category string, fn func(*suite)) {
 	run := filepath.Join(root, "evidence", category+"-"+time.Now().Format("20060102-150405")+"-"+randomID())
 	check(os.MkdirAll(run, 0700))
 	s := &suite{t: t, root: root, run: run, backend: backend, tests: Document{}}
-	s.report = Document{"source_commit": "8cc059bd951551ae4b9dc31c01146a24b3e87a51", "backend": backend, "evidence": run, "run_directory": run, "tests": s.tests, "scope": "real Turso ordinary WAL, TCP page I/O, immutable publication, archive and cold recovery; no Keeper or distributed failover"}
+	s.report = Document{"source_commit": "5c168be5ef6a32ac966daf5983502a4f694b37ad", "backend": backend, "evidence": run, "run_directory": run, "tests": s.tests, "scope": "real Turso ordinary WAL, TCP page I/O, immutable publication, archive and cold recovery; no Keeper or distributed failover"}
 	defer func() {
 		s.report["all_passed"] = !t.Failed()
 		raw := must(json.MarshalIndent(s.report, "", "  "))

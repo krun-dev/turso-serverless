@@ -1,0 +1,97 @@
+{
+  "all_passed": true,
+  "backend": "oss",
+  "evidence": "evidence/cold-20261010-182635-01f0f3c31ef5345082098ce993a75be2",
+  "operations": {
+    "CREATE": 8,
+    "GET": 104,
+    "HINT_PUT": 8,
+    "LIST": 0,
+    "PUT": 15,
+    "RANGE_GET": 461,
+    "metadata_db_operations": 0,
+    "unit": "object API calls; SDK retries may add HTTP requests"
+  },
+  "prefix": "example/pageserver/runs/cold-20261010-182635-01f0f3c31ef5345082098ce993a75be2/cold",
+  "run_directory": "evidence/cold-20261010-182635-01f0f3c31ef5345082098ce993a75be2",
+  "scope": "real Turso ordinary WAL, TCP page I/O, immutable publication, archive and cold recovery; no Keeper or distributed failover",
+  "source_commit": "5c168be5ef6a32ac966daf5983502a4f694b37ad",
+  "tests": {
+    "attached_database_basename_ending_with_wal_recovers_correctly": {
+      "pass": true
+    },
+    "attached_db_checkpoint_restart_rearchive_and_cold_recovery": {
+      "pass": true
+    },
+    "cache_eviction_does_not_change_pinned_version": {
+      "pass": true
+    },
+    "cold_checkpoint_vacuum_shrink_and_old_views": {
+      "pass": true
+    },
+    "cold_point_queries_fetch_only_needed_base_and_wal_blocks": {
+      "baseline_bytes": 2105344,
+      "cached_bytes": 86168,
+      "pass": true
+    },
+    "cold_root_cannot_silently_switch_object_storage_namespace": {
+      "pass": true
+    },
+    "cold_writable_open_commit_and_pinned_old_reader": {
+      "pass": true
+    },
+    "corrupted_cache_is_refetched_and_verified": {
+      "pass": true
+    },
+    "empty_archive_preserves_zero_pages_and_initial_page_size_selection": {
+      "pass": true
+    },
+    "failed_wal_sync_never_becomes_confirmed_after_restart": {
+      "pass": true
+    },
+    "full_restore_preserves_auxiliary_objects_and_publication_map": {
+      "pass": true
+    },
+    "local_restart_keeps_confirmed_commit_and_discards_open_transaction": {
+      "pass": true
+    },
+    "lost_wal_sync_reply_recovers_whole_confirmed_transaction": {
+      "pass": true
+    },
+    "new_compute_connection_reuses_verified_block_cache": {
+      "pass": true
+    },
+    "normal_and_off_checkpoint_preserve_complete_prefix_on_restart": {
+      "normal_rows": 35,
+      "off_rows": 34,
+      "pass": true
+    },
+    "object_outage_fails_closed_and_read_can_retry": {
+      "pass": true
+    },
+    "readonly_snapshots_and_internal_metadata_reject_writes": {
+      "pass": true
+    },
+    "rearchive_compact_and_start_writable_from_empty_cache": {
+      "pass": true
+    },
+    "relative_alias_uses_the_same_remote_backing_not_sparse_holes": {
+      "pass": true
+    },
+    "remote_corruption_rejected_and_concurrent_retry_coalesces": {
+      "pass": true
+    },
+    "restart_retains_pinned_directory_after_remote_compaction_replaces_wal_object": {
+      "pass": true
+    },
+    "shrink_then_regrow_never_resurrects_deleted_backing_pages": {
+      "pass": true
+    },
+    "startup_uses_published_page_index_without_payload_download": {
+      "pass": true
+    }
+  },
+  "source_release": "v0.8.2",
+  "public_summary_only": true,
+  "storage_configuration_redacted": true
+}

@@ -32,9 +32,9 @@ OSS bucket 须从未开启版本控制，不能处于 Enabled 或 Suspended。�
 
 - 内网 endpoint 的 PUT/GET/Range 成功；If-Match 与 If-None-Match PUT 返回 NotImplemented。增加防覆盖头后重复创建返回冲突，原内容保留。
 - 统一 S3 客户端通过端点探针，并验证八个并发创建者只有一个成功；探针对象随后删除。
-- 内存与实际 S3 兼容端点各通过 24 组归档、23 组冷读写和完整 20,905 例官方 WAL 对照。STRICT 补充通过；两条原样内存 VACUUM 上游限制保留，四个持久库变体通过，未新增失败或修改快照。
+- 当前 Turso v0.8.2 的内存与实际 S3 兼容端点各通过 24 组归档、23 组冷读写和完整 16,182 例官方 WAL 对照。STRICT 补充通过；两条原样内存 VACUUM 上游限制保留，四个持久库变体通过，未新增失败或修改快照。此前开发提交的 20,905 例对照作为历史证据保留。
 
-证据：[端点探针](evidence/s3-probe-latest.json)、[并发创建](evidence/s3-concurrent-oss-latest.json)、[内存验收](evidence/cloud-acceptance-memory-latest.json)、[S3 验收](evidence/cloud-acceptance-oss-latest.json)。范围见 [兼容性验证](turso-wal-pageserver-compatibility.md)。
+证据：[端点探针](evidence/s3-probe-latest.json)、[并发创建](evidence/s3-concurrent-oss-latest.json)、[v0.8.2 内存验收](evidence/release-v0.8.2/cloud-acceptance-memory-latest.json)、[v0.8.2 S3 验收](evidence/release-v0.8.2/cloud-acceptance-oss-latest.json)。范围见 [兼容性验证](turso-wal-pageserver-compatibility.md)。
 
 正常双库批次合成一个 pack，以四次逻辑写发布。commit 创建限制为不超过 16 KiB，pack 不超过 64 MiB，未依赖分片条件创建。恢复允许丢失完整未归档尾部；损坏或部分事务不能安装为数据库。
 

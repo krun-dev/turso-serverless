@@ -73,13 +73,15 @@ flowchart TB
 | 后台 compaction | 已实现 pack 重打包并检查发布版本；独立页面 image/delta 整理待实现 |
 | 节点切换与 GC | Keeper、自动接管、写入者隔离、持久请求去重及 GC 待实现 |
 
-当前源码固定为 `8cc059bd951551ae4b9dc31c01146a24b3e87a51`。原型每库仅允许一个计算写入者，文件锁为空实现；尚未提供认证、多节点复制或生产容量承诺。文件、对象和目录采用 POSIX fsync 屏障，硬件断电尚未验证。
+当前依赖 [Turso v0.8.2](https://github.com/tursodatabase/turso/releases/tag/v0.8.2)，通过 Git submodule 固定为 `5c168be5ef6a32ac966daf5983502a4f694b37ad`。原型每库仅允许一个计算写入者，文件锁为空实现；尚未提供认证、多节点复制或生产容量承诺。文件、对象和目录采用 POSIX fsync 屏障，硬件断电尚未验证。
 
 TRUNCATE、RESTART 和 VACUUM 复用 WAL 前会校验已同步 DB 对已发布页面的完整覆盖，先发布新基线和代际；旧对象与历史版本保留。读者使用固定代际和提交位置，后台 pack compaction 不改变逻辑数据版本。
 
 ## 构建与验证
 
 在本目录执行：
+
+首次获取源码可使用 `git clone --recurse-submodules https://github.com/krun-dev/turso-serverless.git`；已有检出运行 `./setup.sh` 初始化子模块。
 
 项目提供源码，不附带预编译二进制。`build.sh` 自动创建 `bin/` 并生成服务和验收工具；`bin/` 与 Rust 的 `target/` 均为忽略的本地构建产物。
 
@@ -93,7 +95,9 @@ TRUNCATE、RESTART 和 VACUUM 复用 WAL 前会校验已同步 DB 对已发布�
 
 `run.sh` 编译、检查 Rust 格式，并验证 10 组 WAL/页面、2 个反例和 5 组代际测试。`run-storage-tests.sh` 验证 24 组归档和 23 组冷读写；加 `--oss` 使用实际阿里云 S3 兼容端点。`run-cloud-e2e.sh` 执行全部安全检查、完整官方 SQL、STRICT 补充、原样 TODO 诊断及持久库变体，最后按逐例身份核对覆盖率。`run-official-e2e.sh` 指向同一完整入口。
 
-需要 Git、Go 和带 rustfmt 的 Rust stable 工具链。构建依赖由 `pageserver/go.mod`、`go.sum` 和 `Cargo.lock` 固定；页面服务最低编译器版本为 1.24，验证使用 Go 1.26.9 和 Rust 1.99.0。`setup.sh` 将 Turso 固定提交 `8cc059bd951551ae4b9dc31c01146a24b3e87a51` 检出到忽略的 `.deps/turso`，测试脚本自动准备该依赖。已有本地 `.rustup`、`.cargo` 时使用它们，否则使用系统安装的 rustup/cargo。
+需要 Git、Go 和带 rustfmt 的 Rust stable 工具链。构建依赖由 `pageserver/go.mod`、`go.sum`、`Cargo.lock` 和 Turso submodule 固定；页面服务最低编译器版本为 1.24，验证使用 Go 1.26.9 和 Rust 1.99.0。`setup.sh` 初始化 `.deps/turso` 并校验主仓库记录的提交，测试脚本自动准备该依赖。已有本地 `.rustup`、`.cargo` 时使用它们，否则使用系统安装的 rustup/cargo。
+
+升级 Turso 时更新子模块提交、`Cargo.lock`、`source-manifest.json` 和对应版本的验收基线，再运行完整对照；主仓库提交记录具体源码版本。
 
 运行使用唯一证据目录和随机 loopback 端口。强杀、损坏注入及目录删除只针对本次 fixture。对象存储配置通过 `S3_ENDPOINT`、`S3_BUCKET`、`S3_PREFIX` 和 `S3_REGION` 提供，凭证从 `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` 读取。外部存储测试要求显式配置端点、桶和前缀，每次写入 `${S3_PREFIX}/runs/<唯一 ID>/...`。`--oss` 选择阿里云防覆盖模式，端点须为 S3 兼容地址。配置未设置时拒绝外部测试；凭证不写入参数、代码或证据。
 
@@ -152,16 +156,18 @@ go vet ./...
 
 仓库的 `docs/evidence/` 提供脱敏验收摘要。完整逐例记录和实验数据库保留在本地忽略的 `evidence/`，不随源码发布；克隆后运行测试重新生成，完整覆盖率汇总需要本次运行产生的原始记录。
 
-完整官方批次保留原始 SQL、矩阵、EXPLAIN 快照和 SQLite 完整性检查，不更新预期。内存与实际 S3 验收均为：20,905 例中 20,559 通过、346 跳过、0 失败/错误；STRICT 补充 342 例通过，原样 TODO 两例通过、两例受上游内存 VACUUM 限制，四个持久库变体通过。按逐例身份核对，共 20,903 个原始用例通过。
+完整官方批次保留原始 SQL、矩阵、EXPLAIN 快照和 SQLite 完整性检查，不更新预期。当前 v0.8.2 内存与实际 S3 后端验收均为：16,182 例中 15,836 通过、346 跳过、0 失败/错误；STRICT 补充 342 例通过，原样 TODO 两例通过、两例受上游内存 VACUUM 限制，四个持久库变体通过。按逐例身份核对，共 16,180 个原始用例通过。内存与实际 S3 各通过 24 组归档和 23 组冷读写检查，标准链路与对象存储链路逐例结果一致。
 
-当前验证入口已替换，64 组安全检查及官方子集、补充批次已重新验证；此前完整语料和实际 S3 证据保留原始运行来源，本次 README 更新没有重新执行这些批次。范围不含 CLI/TCL、其他语言 binding、完整 Rust integration 或分布式 simulator；Linux amd64 已交叉编译，Linux 节点执行尚未验收。
+v0.8.2 已重新验证 64 组核心安全检查、完整内存与实际 S3 语料及补充批次。此前开发提交 `8cc059bd951551ae4b9dc31c01146a24b3e87a51` 的内存与实际 S3 验收为 20,905 例，摘要仍保留在 `docs/evidence/` 顶层；不同源码提交的用例数量不同，验收工具拒绝混用版本。当前版本摘要位于 `docs/evidence/release-v0.8.2/`。范围不含 CLI/TCL、其他语言 binding、完整 Rust integration 或分布式 simulator；此前 Linux amd64 已交叉编译，Linux 节点执行尚未验收。
 
-- [内存完整验收](docs/evidence/cloud-acceptance-memory-latest.json)
-- [实际 S3 完整验收](docs/evidence/cloud-acceptance-oss-latest.json)
-- [归档安全检查](docs/evidence/archive-memory-latest.json)
-- [冷读写安全检查](docs/evidence/cold-memory-latest.json)
+- [v0.8.2 内存完整验收](docs/evidence/release-v0.8.2/cloud-acceptance-memory-latest.json)
+- [v0.8.2 实际 S3 完整验收](docs/evidence/release-v0.8.2/cloud-acceptance-oss-latest.json)
+- [v0.8.2 归档安全检查](docs/evidence/release-v0.8.2/archive-memory-latest.json)
+- [v0.8.2 冷读写安全检查](docs/evidence/release-v0.8.2/cold-memory-latest.json)
+- [历史实际 S3 完整验收](docs/evidence/cloud-acceptance-oss-latest.json)
 - [S3 原子创建探针](docs/evidence/s3-probe-latest.json)
 - [S3 并发防覆盖验证](docs/evidence/s3-concurrent-oss-latest.json)
 - [入口清理与回归记录](docs/evidence/cleanup-latest.json)
+- [v0.8.2 升级与复现检查](docs/evidence/release-v0.8.2/upgrade-checks.json)
 
 项目详细设计见 [Turso 接入](docs/turso-wal-pageserver-design.md)、[Keeper 与 S3 协议](docs/turso-pageserver-keeper-s3-design.md)、[跨库 pack 与元数据](docs/turso-pageserver-pack-metadata-design.md)、[对象存储访问层](docs/turso-pageserver-object-storage-design.md) 和 [官方用例兼容性](docs/turso-wal-pageserver-compatibility.md)。

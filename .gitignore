@@ -2,6 +2,7 @@
 .rustup/
 target/
 /bin/
-/.deps/
+/.deps/*
+!/.deps/turso/
 /evidence/
 /*.log

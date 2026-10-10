@@ -48,7 +48,10 @@ func TestSummaryWithRecordedCorpus(t *testing.T) {
 		t.Skip("completed corpus evidence unavailable")
 	}
 	full := read(fullPath)
-	if number(summaries(full, "remote-cloud")["total"]) != 20905 {
+	if full["source_commit"] != sourceCommit {
+		t.Skip("recorded corpus belongs to a different Turso version")
+	}
+	if number(summaries(full, "remote-cloud")["total"]) != fullCorpusCases {
 		t.Skip("latest evidence is a subset")
 	}
 	categories := []string{"full-cloud", "strict-cloud", "skipped-cloud", "persistent-skipped-cloud", "archive", "cold"}
@@ -65,7 +68,7 @@ func TestSummaryWithRecordedCorpus(t *testing.T) {
 			t.Fatal("completed corpus rejected")
 		}
 	})
-	mutations := map[string]func(document){"filter": func(r document) { r["test_filter"] = "partial" }, "missing_count": func(r document) { summaries(r, "remote-cloud")["total"] = 20904 }, "added_failure": func(r document) { r["paired_outcome_differences"] = []any{document{"key": "extra"}} }, "updated_snapshot": func(r document) { summaries(r, "official")["snapshots_updated"] = 1 }}
+	mutations := map[string]func(document){"filter": func(r document) { r["test_filter"] = "partial" }, "missing_count": func(r document) { summaries(r, "remote-cloud")["total"] = fullCorpusCases - 1 }, "added_failure": func(r document) { r["paired_outcome_differences"] = []any{document{"key": "extra"}} }, "updated_snapshot": func(r document) { summaries(r, "official")["snapshots_updated"] = 1 }}
 	for name, mutate := range mutations {
 		t.Run(name, func(t *testing.T) {
 			root := prepare()
@@ -81,6 +84,19 @@ func TestSummaryWithRecordedCorpus(t *testing.T) {
 			summary(root, nil)
 		})
 	}
+	t.Run("mixed_safety_revision", func(t *testing.T) {
+		root := prepare()
+		path := filepath.Join(root, "evidence/archive-memory-latest.json")
+		r := read(path)
+		r["source_commit"] = "8cc059bd951551ae4b9dc31c01146a24b3e87a51"
+		write(path, r)
+		defer func() {
+			if recover() == nil {
+				t.Fatal("safety checks from a different Turso version accepted")
+			}
+		}()
+		summary(root, nil)
+	})
 	t.Run("json_round_trip", func(t *testing.T) {
 		raw := must(json.Marshal(full))
 		var d document

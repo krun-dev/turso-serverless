@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-10",
+  "source_release": "v0.8.2",
+  "source_commit": "5c168be5ef6a32ac966daf5983502a4f694b37ad",
+  "source_modified": false,
+  "dependency_management": "Git submodule with Cargo path dependencies",
+  "checks": {
+    "fresh_submodule_bootstrap_and_repeat_setup": "passed against upstream Git repository",
+    "locked_debug_and_corpus_builds": "passed",
+    "wal_page_checks": 10,
+    "negative_controls": 2,
+    "generation_checks": 5,
+    "memory_and_s3_archive_checks_each": 24,
+    "memory_and_s3_cold_read_write_checks_each": 23,
+    "full_wal_cases_each_backend": 16182,
+    "full_passed_each_backend": 15836,
+    "full_skipped_each_backend": 346,
+    "strict_supplement_passed_each_backend": 342,
+    "raw_todo_diagnostics": {
+      "passed": 2,
+      "known_upstream_memory_vacuum_failures": 2
+    },
+    "persistent_diagnostic_variants_passed_each_backend": 4,
+    "additional_cloud_failures": 0,
+    "new_or_updated_snapshots": 0,
+    "memory_and_s3_exact_coverage_summary": "passed",
+    "race_unit_tests_and_verifier_regressions": "passed",
+    "go_vet": "passed"
+  },
+  "public_summary_only": true,
+  "storage_configuration_redacted": true,
+  "prebuilt_binaries_included": false,
+  "raw_runtime_fixtures_included": false
+}

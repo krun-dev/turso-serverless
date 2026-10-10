@@ -1,0 +1,54 @@
+{
+  "additional_cloud_failures": 0,
+  "backend": "memory",
+  "evidence": {
+    "full": "evidence/full-cloud-20261010-182643-9ee186a7bb3a3ebf6bc5a575c3ad8426",
+    "persistent": "evidence/full-cloud-20261010-184700-8b207ce1352b6664603f9b1ae8dc6568",
+    "skipped": "evidence/full-cloud-20261010-184700-3ce271750cfd055b99fc2de2dfb88113",
+    "strict": "evidence/full-cloud-20261010-184634-4ae51d52d5ede72b256880e9daa3042d"
+  },
+  "full_corpus": {
+    "duration_ms": 1187739,
+    "errors": 0,
+    "failed": 0,
+    "kind": "summary",
+    "mode": "remote-cloud",
+    "passed": 15836,
+    "skipped": 346,
+    "snapshots_new": 0,
+    "snapshots_updated": 0,
+    "total": 16182
+  },
+  "operations": {
+    "CREATE": 15838,
+    "GET": 142525,
+    "HINT_PUT": 15836,
+    "LIST": 0,
+    "PROBE_DELETE": 1,
+    "PUT": 15839,
+    "RANGE_GET": 66,
+    "metadata_db_operations": 0,
+    "unit": "object API calls; SDK retries may add HTTP requests"
+  },
+  "original_cases_passed_across_batches": 16180,
+  "originally_skipped_diagnostics": {
+    "passed": 2,
+    "unsupported_memory_vacuum": [
+      "gencol_vacuum_virtual",
+      "gencol_vacuum_virtual_with_index"
+    ]
+  },
+  "persistent_diagnostic_variants_passed": 4,
+  "raw_original_zero_skip_pass": false,
+  "safety_tests": {
+    "archive": 24,
+    "cold": 23
+  },
+  "scope": "fixed upstream ordinary WAL SQL corpus, matrices, EXPLAIN and annotated SQLite cross-checks; no distributed failover",
+  "source_commit": "5c168be5ef6a32ac966daf5983502a4f694b37ad",
+  "source_release": "v0.8.2",
+  "strict_supplement_passed": 342,
+  "supported_persistent_path_coverage_pass": true,
+  "public_summary_only": true,
+  "storage_configuration_redacted": true
+}

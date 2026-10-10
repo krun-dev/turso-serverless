@@ -1,0 +1,115 @@
+{
+  "all_executable_cases_passed": true,
+  "backend": "oss",
+  "cloud_stats": {
+    "active": 0,
+    "completed": 342,
+    "hits": 14676,
+    "len": 0,
+    "misses": 30,
+    "operations": {
+      "CREATE": 344,
+      "GET": 3079,
+      "HINT_PUT": 342,
+      "LIST": 0,
+      "PROBE_DELETE": 1,
+      "PUT": 343,
+      "RANGE_GET": 31,
+      "metadata_db_operations": 0,
+      "unit": "object API calls; SDK retries may add HTTP requests"
+    },
+    "rpc": {
+      "admin": 1368,
+      "open": 1368,
+      "size": 1684,
+      "sync": 1804,
+      "write": 2398
+    }
+  },
+  "duration_seconds": 23.20909925,
+  "evidence": "evidence/full-cloud-20261010-185039-8d5608a3f74135d6d75e46fc7794c26e",
+  "explicit_skips_overridden_for_diagnostics": false,
+  "paired_outcome_differences": [
+
+  ],
+  "persistent_diagnostic_variant": false,
+  "prefix": "example/pageserver/runs/full-cloud-20261010-185039-8d5608a3f74135d6d75e46fc7794c26e",
+  "requested_suites": [
+    "sqlite-sqltests",
+    "turso-sqltests"
+  ],
+  "runner_id": "pageserver-corpus-v1",
+  "runs": {
+    "official": {
+      "completed": 342,
+      "exit_code": 0,
+      "failures": [
+
+      ],
+      "scope": [
+        {
+          "cross_check_integrity": true,
+          "explicit_mvcc_cases_excluded": 74,
+          "kind": "scope",
+          "mode": "official",
+          "snapshots_enabled": true
+        }
+      ],
+      "skip_reasons": {
+      },
+      "summaries": [
+        {
+          "duration_ms": 22,
+          "errors": 0,
+          "failed": 0,
+          "kind": "summary",
+          "mode": "official",
+          "passed": 342,
+          "skipped": 0,
+          "snapshots_new": 0,
+          "snapshots_updated": 0,
+          "total": 342
+        }
+      ]
+    },
+    "remote-cloud": {
+      "completed": 342,
+      "exit_code": 0,
+      "failures": [
+
+      ],
+      "scope": [
+        {
+          "cross_check_integrity": true,
+          "explicit_mvcc_cases_excluded": 74,
+          "kind": "scope",
+          "mode": "remote-cloud",
+          "snapshots_enabled": true
+        }
+      ],
+      "skip_reasons": {
+      },
+      "summaries": [
+        {
+          "duration_ms": 22693,
+          "errors": 0,
+          "failed": 0,
+          "kind": "summary",
+          "mode": "remote-cloud",
+          "passed": 342,
+          "skipped": 0,
+          "snapshots_new": 0,
+          "snapshots_updated": 0,
+          "total": 342
+        }
+      ]
+    }
+  },
+  "scope": "unchanged upstream WAL SQL cases and matrices, EXPLAIN verification and annotated SQLite integrity; explicit MVCC excluded",
+  "source_commit": "5c168be5ef6a32ac966daf5983502a4f694b37ad",
+  "strict_supplement": true,
+  "test_filter": null,
+  "source_release": "v0.8.2",
+  "public_summary_only": true,
+  "storage_configuration_redacted": true
+}

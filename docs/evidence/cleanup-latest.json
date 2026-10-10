@@ -1,0 +1,28 @@
+{
+  "removed_project_python_files": 18,
+  "remaining_project_python_files": [
+
+  ],
+  "virtual_environment_removed": true,
+  "safety_checks": {
+    "latest.json": 10,
+    "negative-memory-latest.json": 2,
+    "generation-latest.json": 5,
+    "archive-memory-latest.json": 24,
+    "cold-memory-latest.json": 23
+  },
+  "all_safety_passed": true,
+  "official_subset_cases": 517,
+  "strict_cases": 342,
+  "persistent_diagnostic_cases": 4,
+  "expected_upstream_diagnostic_failures": [
+    "gencol_vacuum_virtual",
+    "gencol_vacuum_virtual_with_index"
+  ],
+  "full_corpus_and_s3_evidence": "previous completed runs, rechecked by current verifier; no full rerun in this cleanup",
+  "broken_document_links": [
+
+  ],
+  "race_and_static_checks_passed": true,
+  "public_summary_only": true
+}

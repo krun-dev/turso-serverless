@@ -1,0 +1,130 @@
+{
+  "source_commit": "8cc059bd951551ae4b9dc31c01146a24b3e87a51",
+  "backend": "oss",
+  "implementation": "go",
+  "requested_suites": [
+    "sqlite-sqltests",
+    "turso-sqltests"
+  ],
+  "test_filter": null,
+  "strict_supplement": false,
+  "explicit_skips_overridden_for_diagnostics": false,
+  "persistent_diagnostic_variant": false,
+  "scope": "all upstream WAL SQL cases and matrices, EXPLAIN snapshots in verification-only mode, annotated SQLite integrity checks; explicit MVCC cases excluded",
+  "prefix": "example/pageserver/runs/full-cloud-go-20261010-163341-1c5d2d55ae8144ec9c0a8fe82afac2f0",
+  "evidence": "evidence/full-cloud-go-20261010-163341-1c5d2d55ae8144ec9c0a8fe82afac2f0",
+  "runs": {
+    "official": {
+      "exit_code": 0,
+      "summaries": [
+        {
+          "duration_ms": 33737,
+          "errors": 0,
+          "failed": 0,
+          "kind": "summary",
+          "mode": "official",
+          "passed": 20559,
+          "skipped": 346,
+          "snapshots_new": 0,
+          "snapshots_updated": 0,
+          "total": 20905
+        }
+      ],
+      "scope": [
+        {
+          "cross_check_integrity": true,
+          "explicit_mvcc_cases_excluded": 74,
+          "kind": "scope",
+          "mode": "official",
+          "snapshots_enabled": true
+        }
+      ],
+      "completed": 20905,
+      "skip_reasons": {
+        "Skipped { reason: \"requires strict: uses STRICT tables\" }": 338,
+        "Skipped { reason: \"Same col_used_mask bug exists in DELETE path - panics (see #6206)\" }": 1,
+        "Skipped { reason: \"TODO requires https://github.com/tursodatabase/turso/issues/6087\" }": 1,
+        "Skipped { reason: \"TODO: VACUUM is not supported yet\" }": 2,
+        "Skipped { reason: \"requires strict: uses domains which require STRICT tables\" }": 1,
+        "Skipped { reason: \"requires strict: uses custom types which require STRICT tables\" }": 2,
+        "Skipped { reason: \"requires strict: uses custom type CAST\" }": 1
+      },
+      "failures": [
+
+      ]
+    },
+    "remote-cloud": {
+      "exit_code": 0,
+      "summaries": [
+        {
+          "duration_ms": 2276318,
+          "errors": 0,
+          "failed": 0,
+          "kind": "summary",
+          "mode": "remote-cloud",
+          "passed": 20559,
+          "skipped": 346,
+          "snapshots_new": 0,
+          "snapshots_updated": 0,
+          "total": 20905
+        }
+      ],
+      "scope": [
+        {
+          "cross_check_integrity": true,
+          "explicit_mvcc_cases_excluded": 74,
+          "kind": "scope",
+          "mode": "remote-cloud",
+          "snapshots_enabled": true
+        }
+      ],
+      "completed": 20905,
+      "skip_reasons": {
+        "Skipped { reason: \"requires strict: uses STRICT tables\" }": 338,
+        "Skipped { reason: \"Same col_used_mask bug exists in DELETE path - panics (see #6206)\" }": 1,
+        "Skipped { reason: \"TODO requires https://github.com/tursodatabase/turso/issues/6087\" }": 1,
+        "Skipped { reason: \"TODO: VACUUM is not supported yet\" }": 2,
+        "Skipped { reason: \"requires strict: uses domains which require STRICT tables\" }": 1,
+        "Skipped { reason: \"requires strict: uses custom types which require STRICT tables\" }": 2,
+        "Skipped { reason: \"requires strict: uses custom type CAST\" }": 1
+      },
+      "failures": [
+
+      ]
+    }
+  },
+  "paired_outcome_differences": [
+
+  ],
+  "cloud_stats": {
+    "active": 0,
+    "completed": 20559,
+    "hits": 1033802,
+    "len": 0,
+    "misses": 65,
+    "operations": {
+      "CREATE": 20561,
+      "GET": 185032,
+      "HINT_PUT": 20559,
+      "LIST": 0,
+      "PROBE_DELETE": 1,
+      "PUT": 20562,
+      "RANGE_GET": 66,
+      "metadata_db_operations": 0,
+      "unit": "Go object API calls; SDK retries may add HTTP requests"
+    },
+    "rpc": {
+      "admin": 82236,
+      "open": 82236,
+      "read": 119882,
+      "size": 96923,
+      "sync": 123789,
+      "truncate": 5,
+      "write": 215548
+    }
+  },
+  "all_executable_cases_passed": true,
+  "duration_seconds": 2278.05,
+  "storage_configuration_redacted": true,
+  "public_summary_only": true
+}

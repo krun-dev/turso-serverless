@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-10",
+  "scope": "initial source publication",
+  "source_commit": "8cc059bd951551ae4b9dc31c01146a24b3e87a51",
+  "checks": {
+    "pinned_upstream_checkout": "passed using setup.sh from an absent .deps/turso",
+    "rust_format_and_locked_build": "passed",
+    "wal_page_checks": 10,
+    "negative_controls": 2,
+    "generation_checks": 5,
+    "archive_checks": 24,
+    "cold_read_write_checks": 23,
+    "race_unit_tests": "passed",
+    "go_vet": "passed",
+    "staged_source_export_build_and_unit_tests": "passed; optional recorded-corpus test skips without local raw evidence",
+    "official_sql_subset": {
+      "cases": 504,
+      "additional_outcome_differences": 0,
+      "passed": true
+    },
+    "document_links": "passed",
+    "staged_private_storage_metadata_and_credential_scan": "passed"
+  },
+  "public_summary_only": true,
+  "full_official_corpus_rerun": false,
+  "prebuilt_binaries_included": false,
+  "runtime_database_fixtures_included": false
+}

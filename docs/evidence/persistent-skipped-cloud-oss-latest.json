@@ -1,0 +1,115 @@
+{
+  "source_commit": "8cc059bd951551ae4b9dc31c01146a24b3e87a51",
+  "backend": "oss",
+  "implementation": "go",
+  "requested_suites": [
+    "sqlite-sqltests/gencol.sqltest"
+  ],
+  "test_filter": null,
+  "strict_supplement": false,
+  "explicit_skips_overridden_for_diagnostics": true,
+  "persistent_diagnostic_variant": true,
+  "scope": "all upstream WAL SQL cases and matrices, EXPLAIN snapshots in verification-only mode, annotated SQLite integrity checks; explicit MVCC cases excluded",
+  "prefix": "example/pageserver/runs/full-cloud-go-20261010-171206-808e02204b984136916274a6bbe42715",
+  "evidence": "evidence/full-cloud-go-20261010-171206-808e02204b984136916274a6bbe42715",
+  "runs": {
+    "official": {
+      "exit_code": 0,
+      "summaries": [
+        {
+          "duration_ms": 47,
+          "errors": 0,
+          "failed": 0,
+          "kind": "summary",
+          "mode": "official",
+          "passed": 4,
+          "skipped": 0,
+          "snapshots_new": 0,
+          "snapshots_updated": 0,
+          "total": 4
+        }
+      ],
+      "scope": [
+        {
+          "cross_check_integrity": true,
+          "explicit_mvcc_cases_excluded": 0,
+          "kind": "scope",
+          "mode": "official",
+          "snapshots_enabled": true
+        }
+      ],
+      "completed": 4,
+      "skip_reasons": {
+      },
+      "failures": [
+
+      ]
+    },
+    "remote-cloud": {
+      "exit_code": 0,
+      "summaries": [
+        {
+          "duration_ms": 798,
+          "errors": 0,
+          "failed": 0,
+          "kind": "summary",
+          "mode": "remote-cloud",
+          "passed": 4,
+          "skipped": 0,
+          "snapshots_new": 0,
+          "snapshots_updated": 0,
+          "total": 4
+        }
+      ],
+      "scope": [
+        {
+          "cross_check_integrity": true,
+          "explicit_mvcc_cases_excluded": 0,
+          "kind": "scope",
+          "mode": "remote-cloud",
+          "snapshots_enabled": true
+        }
+      ],
+      "completed": 4,
+      "skip_reasons": {
+      },
+      "failures": [
+
+      ]
+    }
+  },
+  "paired_outcome_differences": [
+
+  ],
+  "cloud_stats": {
+    "active": 0,
+    "completed": 4,
+    "hits": 9,
+    "len": 0,
+    "misses": 3,
+    "operations": {
+      "CREATE": 6,
+      "GET": 37,
+      "HINT_PUT": 4,
+      "LIST": 0,
+      "PROBE_DELETE": 1,
+      "PUT": 5,
+      "RANGE_GET": 4,
+      "metadata_db_operations": 0,
+      "unit": "Go object API calls; SDK retries may add HTTP requests"
+    },
+    "rpc": {
+      "admin": 16,
+      "open": 16,
+      "read": 16,
+      "size": 22,
+      "sync": 32,
+      "truncate": 2,
+      "write": 50
+    }
+  },
+  "all_executable_cases_passed": true,
+  "duration_seconds": 1.01,
+  "storage_configuration_redacted": true,
+  "public_summary_only": true
+}

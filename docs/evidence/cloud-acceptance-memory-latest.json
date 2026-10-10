@@ -1,0 +1,52 @@
+{
+  "additional_cloud_failures": 0,
+  "backend": "memory",
+  "evidence": {
+    "full": "evidence/full-cloud-go-20261010-163303-a660445787324d0a9cfce11982e9eaa5",
+    "persistent": "evidence/full-cloud-go-20261010-170608-c3bd5c1327ab40bd9e484ca2b48077a9",
+    "skipped": "evidence/full-cloud-go-20261010-170607-00633c70ed014ab4af9686f408aa1fb9",
+    "strict": "evidence/full-cloud-go-20261010-170533-eff314a38e054ba897575350a8993501"
+  },
+  "full_corpus": {
+    "duration_ms": 1947654,
+    "errors": 0,
+    "failed": 0,
+    "kind": "summary",
+    "mode": "remote-cloud",
+    "passed": 20559,
+    "skipped": 346,
+    "snapshots_new": 0,
+    "snapshots_updated": 0,
+    "total": 20905
+  },
+  "operations": {
+    "CREATE": 20561,
+    "GET": 185032,
+    "HINT_PUT": 20559,
+    "LIST": 0,
+    "PROBE_DELETE": 1,
+    "PUT": 20562,
+    "RANGE_GET": 66,
+    "metadata_db_operations": 0,
+    "unit": "Go object API calls; SDK retries may add HTTP requests"
+  },
+  "original_cases_passed_across_batches": 20903,
+  "originally_skipped_diagnostics": {
+    "passed": 2,
+    "unsupported_memory_vacuum": [
+      "gencol_vacuum_virtual",
+      "gencol_vacuum_virtual_with_index"
+    ]
+  },
+  "persistent_diagnostic_variants_passed": 4,
+  "raw_original_zero_skip_pass": false,
+  "safety_tests": {
+    "archive": 24,
+    "cold": 23
+  },
+  "scope": "fixed upstream ordinary WAL SQL corpus, matrices, EXPLAIN and annotated SQLite cross-checks; no distributed failover",
+  "source_commit": "8cc059bd951551ae4b9dc31c01146a24b3e87a51",
+  "strict_supplement_passed": 342,
+  "supported_persistent_path_coverage_pass": true,
+  "public_summary_only": true
+}

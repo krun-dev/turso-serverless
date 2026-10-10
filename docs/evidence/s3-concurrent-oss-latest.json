@@ -1,0 +1,20 @@
+{
+  "sdk": "aws-sdk-go-v2",
+  "endpoint": "https://s3.example.invalid",
+  "prefix": "example/pageserver/runs/go-concurrent-20261010-163607-d1d00820de2e4b47aa37619468d220c2",
+  "concurrent_creators": 8,
+  "winners": 1,
+  "overwrite_rejected": true,
+  "original_preserved": true,
+  "all_passed": true,
+  "operations": {
+    "CREATE": 9,
+    "GET": 2,
+    "LIST": 0,
+    "PROBE_DELETE": 1,
+    "metadata_db_operations": 0,
+    "unit": "Go object API calls; SDK retries may add HTTP requests"
+  },
+  "storage_configuration_redacted": true,
+  "public_summary_only": true
+}

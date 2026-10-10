@@ -1,0 +1,31 @@
+[package]
+name = "turso-pageserver-probe"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+turso_core = { path = ".deps/turso/core", default-features = false, features = ["fs", "uuid", "json"] }
+serde_json = "1"
+sqltest = { path = ".deps/turso/testing/sqltest", optional = true }
+turso = { path = ".deps/turso/bindings/rust", features = ["test_helper"], optional = true }
+turso_parser = { path = ".deps/turso/sqlite/parser", optional = true }
+async-trait = { version = "0.1", optional = true }
+tokio = { version = "1", features = ["full"], optional = true }
+tempfile = { version = "3", optional = true }
+
+[features]
+official-e2e = ["dep:sqltest", "dep:turso", "dep:turso_parser", "dep:async-trait", "dep:tokio", "dep:tempfile"]
+
+[[bin]]
+name = "official-e2e"
+path = "src/bin/official-e2e.rs"
+required-features = ["official-e2e"]
+
+# Upstream EXPLAIN snapshots use the non-debug hash-join budget (64 MiB).
+# Keep symbols/optimizations modest for this compatibility harness.
+[profile.corpus]
+inherits = "dev"
+debug-assertions = false
+opt-level = 1
+debug = 0
+incremental = false

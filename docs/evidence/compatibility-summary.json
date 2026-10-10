@@ -1,0 +1,452 @@
+{
+  "source_commit": "8cc059bd951551ae4b9dc31c01146a24b3e87a51",
+  "full_sql": {
+    "official": {
+      "exit_code": 0,
+      "summaries": [
+        {
+          "duration_ms": 88883,
+          "errors": 0,
+          "failed": 0,
+          "kind": "summary",
+          "mode": "official",
+          "passed": 20140,
+          "skipped": 346,
+          "total": 20486
+        }
+      ],
+      "completed": 20486
+    },
+    "local-file": {
+      "exit_code": 0,
+      "summaries": [
+        {
+          "duration_ms": 133758,
+          "errors": 0,
+          "failed": 4,
+          "kind": "summary",
+          "mode": "local-file",
+          "passed": 20136,
+          "skipped": 346,
+          "total": 20486
+        }
+      ],
+      "completed": 20486
+    },
+    "remote-file": {
+      "exit_code": 0,
+      "summaries": [
+        {
+          "duration_ms": 133167,
+          "errors": 0,
+          "failed": 4,
+          "kind": "summary",
+          "mode": "remote-file",
+          "passed": 20136,
+          "skipped": 346,
+          "total": 20486
+        }
+      ],
+      "completed": 20486
+    }
+  },
+  "pages_sql": {
+    "local-select": {
+      "exit_code": 0,
+      "summaries": [
+        {
+          "duration_ms": 340,
+          "errors": 0,
+          "failed": 0,
+          "kind": "summary",
+          "mode": "local-select",
+          "passed": 53,
+          "skipped": 0,
+          "total": 53
+        }
+      ],
+      "completed": 53
+    },
+    "remote-pages": {
+      "exit_code": 0,
+      "summaries": [
+        {
+          "duration_ms": 1686,
+          "errors": 0,
+          "failed": 0,
+          "kind": "summary",
+          "mode": "remote-pages",
+          "passed": 53,
+          "skipped": 0,
+          "total": 53
+        }
+      ],
+      "completed": 53
+    }
+  },
+  "published_sql": {
+    "local-file": {
+      "exit_code": 0,
+      "summaries": [
+        {
+          "duration_ms": 710,
+          "errors": 0,
+          "failed": 0,
+          "kind": "summary",
+          "mode": "local-file",
+          "passed": 59,
+          "skipped": 0,
+          "total": 59
+        }
+      ],
+      "completed": 59
+    },
+    "remote-published": {
+      "exit_code": 0,
+      "summaries": [
+        {
+          "duration_ms": 3600,
+          "errors": 0,
+          "failed": 0,
+          "kind": "summary",
+          "mode": "remote-published",
+          "passed": 59,
+          "skipped": 0,
+          "total": 59
+        }
+      ],
+      "completed": 59
+    }
+  },
+  "raw_paired_differences": [
+
+  ],
+  "page_paired_differences": [
+
+  ],
+  "publication_paired_differences": [
+
+  ],
+  "full_failures": {
+    "official": [
+
+    ],
+    "local-file": [
+      {
+        "database": ":memory:",
+        "duration_ms": 72,
+        "error": false,
+        "failed": true,
+        "file": "[local-only path]",
+        "kind": "test",
+        "mode": "local-file",
+        "name": "database-list-includes-temp-after-temp-init",
+        "outcome": "Failed { reason: \"--- expected\\n+++ actual\\n-0|main|\\n+0|main|evidence/official-20261009-111354-86121/local-file/storage/case-13601.db\\n 1|temp|\\n\" }",
+        "passed": false,
+        "skipped": false
+      },
+      {
+        "database": ":memory:",
+        "duration_ms": 15,
+        "error": false,
+        "failed": true,
+        "file": "[local-only path]",
+        "kind": "test",
+        "mode": "local-file",
+        "name": "attach-memory-database",
+        "outcome": "Failed { reason: \"--- expected\\n+++ actual\\n-0|main|\\n+0|main|evidence/official-20261009-111354-86121/local-file/storage/case-18827.db\\n 2|mem|\\n\" }",
+        "passed": false,
+        "skipped": false
+      },
+      {
+        "database": ":memory:",
+        "duration_ms": 17,
+        "error": false,
+        "failed": true,
+        "file": "[local-only path]",
+        "kind": "test",
+        "mode": "local-file",
+        "name": "detach-database",
+        "outcome": "Failed { reason: \"--- expected\\n+++ actual\\n-0|main|\\n+0|main|evidence/official-20261009-111354-86121/local-file/storage/case-18826.db\\n\" }",
+        "passed": false,
+        "skipped": false
+      },
+      {
+        "database": ":memory:",
+        "duration_ms": 11,
+        "error": false,
+        "failed": true,
+        "file": "[local-only path]",
+        "kind": "test",
+        "mode": "local-file",
+        "name": "database-list-with-arg",
+        "outcome": "Failed { reason: \"--- expected\\n+++ actual\\n-0|main|\\n+0|main|evidence/official-20261009-111354-86121/local-file/storage/case-18833.db\\n\" }",
+        "passed": false,
+        "skipped": false
+      }
+    ],
+    "remote-file": [
+      {
+        "database": ":memory:",
+        "duration_ms": 43,
+        "error": false,
+        "failed": true,
+        "file": "[local-only path]",
+        "kind": "test",
+        "mode": "remote-file",
+        "name": "database-list-includes-temp-after-temp-init",
+        "outcome": "Failed { reason: \"--- expected\\n+++ actual\\n-0|main|\\n+0|main|case-14112.db\\n 1|temp|\\n\" }",
+        "passed": false,
+        "skipped": false
+      },
+      {
+        "database": ":memory:",
+        "duration_ms": 8,
+        "error": false,
+        "failed": true,
+        "file": "[local-only path]",
+        "kind": "test",
+        "mode": "remote-file",
+        "name": "attach-memory-database",
+        "outcome": "Failed { reason: \"--- expected\\n+++ actual\\n-0|main|\\n+0|main|case-19053.db\\n 2|mem|\\n\" }",
+        "passed": false,
+        "skipped": false
+      },
+      {
+        "database": ":memory:",
+        "duration_ms": 8,
+        "error": false,
+        "failed": true,
+        "file": "[local-only path]",
+        "kind": "test",
+        "mode": "remote-file",
+        "name": "database-list-with-arg",
+        "outcome": "Failed { reason: \"--- expected\\n+++ actual\\n-0|main|\\n+0|main|case-19056.db\\n\" }",
+        "passed": false,
+        "skipped": false
+      },
+      {
+        "database": ":memory:",
+        "duration_ms": 14,
+        "error": false,
+        "failed": true,
+        "file": "[local-only path]",
+        "kind": "test",
+        "mode": "remote-file",
+        "name": "detach-database",
+        "outcome": "Failed { reason: \"--- expected\\n+++ actual\\n-0|main|\\n+0|main|case-19052.db\\n\" }",
+        "passed": false,
+        "skipped": false
+      }
+    ]
+  },
+  "edges": {
+    "scope": "repaired WAL transition and remaining NORMAL publication gap; not production guarantees",
+    "cases": {
+      "wal_generation_transition": {
+        "repaired": true,
+        "views_before": [
+          "view-0.db",
+          "view-1.db"
+        ],
+        "views_after": [
+          "view-0.db",
+          "view-1.db",
+          "view-g1-0.db",
+          "view-g1-1.db"
+        ],
+        "checkpoint": {
+          "elapsed_us": 5967,
+          "ok": true,
+          "rows": [
+            [
+              "Numeric(Integer(0))",
+              "Numeric(Integer(0))",
+              "Numeric(Integer(0))"
+            ]
+          ]
+        },
+        "events": [
+          {
+            "op": "open",
+            "path": "live.db-wal",
+            "pos": 0,
+            "len": 0,
+            "elapsed_us": 24,
+            "returned_bytes": 0
+          },
+          {
+            "op": "size",
+            "path": "live.db-wal",
+            "pos": 0,
+            "len": 0,
+            "elapsed_us": 17,
+            "returned_bytes": 0
+          },
+          {
+            "op": "read",
+            "path": "live.db-wal",
+            "pos": 0,
+            "len": 32,
+            "elapsed_us": 38,
+            "returned_bytes": 32
+          },
+          {
+            "op": "read",
+            "path": "live.db-wal",
+            "pos": 32,
+            "len": 4120,
+            "elapsed_us": 43,
+            "returned_bytes": 4120
+          },
+          {
+            "op": "size",
+            "path": "live.db",
+            "pos": 0,
+            "len": 0,
+            "elapsed_us": 17,
+            "returned_bytes": 0
+          },
+          {
+            "op": "read",
+            "path": "live.db",
+            "pos": 0,
+            "len": 4096,
+            "elapsed_us": 37,
+            "returned_bytes": 4096
+          },
+          {
+            "op": "read",
+            "path": "live.db",
+            "pos": 0,
+            "len": 4096,
+            "elapsed_us": 39,
+            "returned_bytes": 4096
+          },
+          {
+            "op": "read",
+            "path": "live.db",
+            "pos": 0,
+            "len": 512,
+            "elapsed_us": 33,
+            "returned_bytes": 512
+          },
+          {
+            "op": "read",
+            "path": "live.db",
+            "pos": 0,
+            "len": 4096,
+            "elapsed_us": 34,
+            "returned_bytes": 4096
+          },
+          {
+            "op": "read",
+            "path": "live.db",
+            "pos": 0,
+            "len": 512,
+            "elapsed_us": 39,
+            "returned_bytes": 512
+          },
+          {
+            "op": "read",
+            "path": "live.db",
+            "pos": 0,
+            "len": 4096,
+            "elapsed_us": 34,
+            "returned_bytes": 4096
+          },
+          {
+            "op": "read",
+            "path": "live.db",
+            "pos": 0,
+            "len": 512,
+            "elapsed_us": 140,
+            "returned_bytes": 512
+          },
+          {
+            "op": "read",
+            "path": "live.db",
+            "pos": 0,
+            "len": 4096,
+            "elapsed_us": 46,
+            "returned_bytes": 4096
+          },
+          {
+            "op": "read",
+            "path": "live.db-wal",
+            "pos": 56,
+            "len": 4096,
+            "elapsed_us": 80,
+            "returned_bytes": 4096
+          }
+        ],
+        "evidence": "evidence/run-20261009-111709-88258-1791515829032860000",
+        "conclusion": "authoritative publication supports durable covering baseline transition, subsequent writes, retained old views and restart",
+        "pass": true
+      },
+      "normal_commit_not_published": {
+        "reproduced": true,
+        "client_reply": {
+          "elapsed_us": 499,
+          "ok": true,
+          "rows": [
+
+          ]
+        },
+        "wal_syncs": 0,
+        "views_before": [
+          "view-0.db",
+          "view-1.db"
+        ],
+        "views_after": [
+          "view-0.db",
+          "view-1.db"
+        ],
+        "rows_after_restart": 1,
+        "evidence": "evidence/run-20261009-111709-88258-1791515829171309000",
+        "conclusion": "NORMAL success does not imply durable remote publication; FULL must be enforced"
+      }
+    }
+  },
+  "generation_tests": {
+    "tests": {
+      "repeated_vacuum_and_post_vacuum_writes": {
+        "before_bytes": 180224,
+        "after_bytes": 16384,
+        "pass": true
+      },
+      "old_snapshots_across_page_rewrite_and_generations": {
+        "views": [
+          "view-0.db",
+          "view-42.db",
+          "view-g1-0.db",
+          "view-g1-2.db",
+          "view-g2-0.db",
+          "view-g2-2.db"
+        ],
+        "retained_initial_rows": 80,
+        "pass": true
+      },
+      "truncate_and_restart_reuse": {
+        "truncate_view": "view-g3-2.db",
+        "restart_view": "view-g4-5.db",
+        "pass": true
+      },
+      "retained_generations_after_process_restart": {
+        "generations": 5,
+        "snapshots": 8,
+        "pass": true
+      },
+      "unsafe_reset_rejected_without_covering_durable_base": {
+        "pass": true
+      }
+    },
+    "evidence": "evidence/run-20261009-111701-88098-1791515821858691000",
+    "scope": "single-writer local immutable objects and manifest; no Keeper, S3 or distributed recovery",
+    "all_passed": true
+  },
+  "production_ready": false,
+  "compatible": true,
+  "cargo_lock_sha256": "37bc4bc8ce1fb5b361ffee4e3a49e13a1d883ff632f409032e35abb7998bd86c",
+  "public_summary_only": true
+}

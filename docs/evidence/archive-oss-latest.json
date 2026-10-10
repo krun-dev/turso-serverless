@@ -1,0 +1,155 @@
+{
+  "backend": "oss",
+  "prefix": "example/pageserver/runs/archive-20261010-152424-6709bc9937884d22aa7affd4bdd8596e/v1/tenants/test/archive-groups/group1",
+  "run_directory": "evidence/archive-20261010-152424-6709bc9937884d22aa7affd4bdd8596e",
+  "opendal": "0.47.10",
+  "tests": {
+    "atomic_create_and_range_probe": {
+      "pass": true
+    },
+    "backend_ignoring_creation_condition_is_rejected": {
+      "pass": true
+    },
+    "two_databases_one_pack_four_publication_writes": {
+      "pass": true,
+      "operations": {
+        "CREATE": 1,
+        "GET": 5,
+        "RANGE_GET": 0,
+        "PROBE_DELETE": 0,
+        "PUT": 2,
+        "HINT_PUT": 1
+      }
+    },
+    "pack_footer_and_independent_chunk_checksums": {
+      "pass": true,
+      "chunks": 4,
+      "bytes": 3163
+    },
+    "idle_batch_writes_nothing": {
+      "pass": true
+    },
+    "unarchived_complete_tail_can_be_lost_without_corruption": {
+      "pass": true,
+      "db_a": {
+        "rows": 80,
+        "integrity_check": "ok"
+      },
+      "db_b": {
+        "rows": 80,
+        "integrity_check": "ok"
+      }
+    },
+    "pack_and_manifest_without_commit_are_not_visible": {
+      "pass": true
+    },
+    "durable_upload_plan_retries_same_commit": {
+      "pass": true
+    },
+    "crash_after_commit_before_hint_recovers_new_directory": {
+      "pass": true,
+      "db_a": {
+        "rows": 82,
+        "integrity_check": "ok"
+      }
+    },
+    "late_current_cannot_regress_authority": {
+      "pass": true
+    },
+    "missing_hint_recovers_without_list": {
+      "pass": true
+    },
+    "commit_slot_cannot_be_overwritten": {
+      "pass": true
+    },
+    "older_local_prefix_is_rejected": {
+      "pass": true,
+      "error": "IntegrityError"
+    },
+    "partial_wal_suffix_is_excluded": {
+      "pass": true
+    },
+    "sql_commit_continues_while_archive_upload_is_blocked": {
+      "pass": true,
+      "archived_db_b": {
+        "rows": 80,
+        "integrity_check": "ok"
+      },
+      "live_db_b_rows": 81
+    },
+    "corrupt_pack_fails_before_database_installation": {
+      "pass": true,
+      "error": "error"
+    },
+    "pack_compaction_keeps_vacuum_generations_and_live_data": {
+      "pass": true,
+      "db_a": {
+        "rows": 83,
+        "integrity_check": "ok"
+      },
+      "db_b": {
+        "rows": 50,
+        "integrity_check": "ok"
+      }
+    },
+    "old_archive_revision_survives_compaction": {
+      "pass": true,
+      "db_a": {
+        "rows": 80,
+        "integrity_check": "ok"
+      },
+      "db_b": {
+        "rows": 80,
+        "integrity_check": "ok"
+      }
+    },
+    "stale_compaction_cannot_overwrite_new_archive_tail": {
+      "pass": true,
+      "db_a": {
+        "rows": 84,
+        "integrity_check": "ok"
+      }
+    },
+    "live_historical_page_reads_survive_remote_compaction": {
+      "pass": true
+    },
+    "catchup_budget_failure_does_not_return_stale_head": {
+      "pass": true
+    },
+    "large_wal_append_reuses_previously_archived_full_chunks": {
+      "pass": true,
+      "wal_bytes": 247232,
+      "new_raw_chunk_bytes": 50624
+    },
+    "loss_of_all_local_database_and_coordinator_files_recovers_from_archive": {
+      "pass": true,
+      "db_a": {
+        "rows": 277,
+        "integrity_check": "ok"
+      },
+      "db_b": {
+        "rows": 50,
+        "integrity_check": "ok"
+      }
+    },
+    "archive_recovery_compaction_use_no_list_or_metadata_db": {
+      "pass": true
+    }
+  },
+  "scope": "real Turso FULL WAL; cross-db pack archive, complete-prefix recovery, async pack compaction; no Keeper, automatic takeover, GC or production capacity guarantee",
+  "operations": {
+    "CREATE": 13,
+    "GET": 219,
+    "RANGE_GET": 55,
+    "PROBE_DELETE": 1,
+    "PUT": 22,
+    "HINT_PUT": 14,
+    "LIST": 0,
+    "metadata_db_operations": 0,
+    "unit": "OpenDAL API calls; multipart/retries may add HTTP requests"
+  },
+  "latest_revision": 10,
+  "all_passed": true,
+  "storage_configuration_redacted": true,
+  "public_summary_only": true
+}

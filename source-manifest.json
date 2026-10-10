@@ -1,0 +1,18 @@
+{
+  "scope": "WAL mode only",
+  "source_commit": "8cc059bd951551ae4b9dc31c01146a24b3e87a51",
+  "source_modified": false,
+  "source_package_version": "0.8.0",
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+  "features": [
+    "fs",
+    "uuid",
+    "json"
+  ],
+  "profile": "debug",
+  "validation": {
+    "positive": "docs/evidence/latest.json",
+    "negative": "docs/evidence/negative-controls.json"
+  },
+  "source_url": "https://github.com/tursodatabase/turso"
+}

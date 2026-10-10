@@ -1,0 +1,97 @@
+{
+  "all_passed": true,
+  "backend": "memory",
+  "evidence": "evidence/archive-20261010-180130-28b564a7fd55e68f926a7952a7fb93bc",
+  "latest_revision": 10,
+  "operations": {
+    "CREATE": 13,
+    "GET": 213,
+    "HINT_PUT": 14,
+    "LIST": 0,
+    "PROBE_DELETE": 2,
+    "PUT": 22,
+    "RANGE_GET": 73,
+    "metadata_db_operations": 0,
+    "unit": "object API calls; SDK retries may add HTTP requests"
+  },
+  "prefix": "test-runs/archive-20261010-180130-28b564a7fd55e68f926a7952a7fb93bc/archive",
+  "run_directory": "evidence/archive-20261010-180130-28b564a7fd55e68f926a7952a7fb93bc",
+  "scope": "real Turso ordinary WAL, TCP page I/O, immutable publication, archive and cold recovery; no Keeper or distributed failover",
+  "source_commit": "8cc059bd951551ae4b9dc31c01146a24b3e87a51",
+  "tests": {
+    "archive_recovery_compaction_use_no_list_or_metadata_db": {
+      "pass": true
+    },
+    "atomic_create_and_range_probe": {
+      "pass": true
+    },
+    "backend_ignoring_creation_condition_is_rejected": {
+      "pass": true
+    },
+    "catchup_budget_failure_does_not_return_stale_head": {
+      "pass": true
+    },
+    "commit_slot_cannot_be_overwritten": {
+      "pass": true
+    },
+    "corrupt_pack_fails_before_database_installation": {
+      "pass": true
+    },
+    "crash_after_commit_before_hint_recovers_new_directory": {
+      "pass": true
+    },
+    "durable_upload_plan_retries_same_commit": {
+      "pass": true
+    },
+    "idle_batch_writes_nothing": {
+      "pass": true
+    },
+    "large_wal_append_reuses_previously_archived_full_chunks": {
+      "pass": true
+    },
+    "late_current_cannot_regress_authority": {
+      "pass": true
+    },
+    "live_historical_page_reads_survive_remote_compaction": {
+      "pass": true
+    },
+    "loss_of_all_local_database_and_coordinator_files_recovers_from_archive": {
+      "pass": true
+    },
+    "missing_hint_recovers_without_list": {
+      "pass": true
+    },
+    "old_archive_revision_survives_compaction": {
+      "pass": true
+    },
+    "older_local_prefix_is_rejected": {
+      "pass": true
+    },
+    "pack_and_manifest_without_commit_are_not_visible": {
+      "pass": true
+    },
+    "pack_compaction_keeps_vacuum_generations_and_live_data": {
+      "pass": true
+    },
+    "pack_footer_and_independent_chunk_checksums": {
+      "pass": true
+    },
+    "partial_wal_suffix_is_excluded": {
+      "pass": true
+    },
+    "sql_commit_continues_while_archive_upload_is_blocked": {
+      "pass": true
+    },
+    "stale_compaction_cannot_overwrite_new_archive_tail": {
+      "pass": true
+    },
+    "two_databases_one_pack_four_publication_writes": {
+      "pass": true,
+      "writes": 4
+    },
+    "unarchived_complete_tail_can_be_lost_without_corruption": {
+      "pass": true
+    }
+  },
+  "public_summary_only": true
+}

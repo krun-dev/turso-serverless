@@ -1,0 +1,21 @@
+{
+  "endpoint": "https://s3.example.invalid",
+  "sdk": "aws-sdk-go-v2",
+  "create_mode": "oss-forbid-overwrite",
+  "prefix": "example/pageserver/runs/go-s3-probe-20261010-162232-aaae320e092447eaaf20a948f1273e79",
+  "all_passed": true,
+  "result": {
+    "operations": {
+      "CREATE": 2,
+      "GET": 3,
+      "LIST": 0,
+      "PROBE_DELETE": 1,
+      "RANGE_GET": 1,
+      "metadata_db_operations": 0,
+      "unit": "Go object API calls; SDK retries may add HTTP requests"
+    },
+    "result": null
+  },
+  "storage_configuration_redacted": true,
+  "public_summary_only": true
+}

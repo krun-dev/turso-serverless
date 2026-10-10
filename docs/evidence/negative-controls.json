@@ -1,0 +1,13 @@
+{
+  "latest": {
+    "pass": true,
+    "rejected_with": "AssertionError(('fixed_version_mixed_with_latest', 'view-0.db', 'Integer(512)', 'Integer(513)'))",
+    "run_directory": "evidence/run-20261010-163327-30013-1791621207598429000-latest"
+  },
+  "raw-recovery": {
+    "pass": true,
+    "rejected_with": "AssertionError(('unacknowledged_wal_recovered', 'Integer(1)'))",
+    "run_directory": "evidence/run-20261010-163331-30318-1791621211214756000-raw-recovery"
+  },
+  "public_summary_only": true
+}
